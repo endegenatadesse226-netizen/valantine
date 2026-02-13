@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>መልካም የፍቅረኞች ቀን ❤️</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="hearts-background"></div>
+        
+        <div class="content">
+            <h1 class="title">መልካም የፍቅረኞች ቀን!</h1>
+            
+            <!-- Step 1: Initial Question -->
+            <div class="step" id="step1">
+                <p class="question">ለእኔ ምን ያህል ልዩ እንደሆንሽ ታውቂያለሽ? 💖</p>
+                <div class="buttons">
+                    <button class="btn btn-yes" onclick="nextStep(2)">አዎ</button>
+                    <button class="btn btn-no" onclick="showMessage('እሺ፣ ላሳይሽ! 😊'); setTimeout(() => nextStep(2), 1500)">አላውቅም</button>
+                </div>
+            </div>
+            
+            <!-- Step 2: Second Question -->
+            <div class="step hidden" id="step2">
+                <p class="question">የእኔ ፍቅረኛ ትሆኚያለሽ? 💕</p>
+                <div class="buttons">
+                    <button class="btn btn-yes" onclick="nextStep(3)">አዎ!</button>
+                    <button class="btn btn-no" onclick="showMessage('እባክሽ? 🥺'); moveButton(event)">አይ</button>
+                </div>
+            </div>
+            
+            <!-- Step 3: Third Question -->
+            <div class="step hidden" id="step3">
+                <p class="question">የሚያስደንቅ ነገር ለማየት ዝግጁ ነሽ? ✨</p>
+                <div class="buttons">
+                    <button class="btn btn-yes" onclick="nextStep(4)">አዎ!</button>
+                    <button class="btn btn-no" onclick="showMessage('ና! 😄'); setTimeout(() => nextStep(4), 1500)">ገና</button>
+                </div>
+            </div>
+            
+            <!-- Step 4: Photo Reveal -->
+            <div class="step hidden" id="step4">
+                <div class="photo-frame">
+                    <img src="e.jpg" alt="ፍቅሬ" class="main-photo">
+                </div>
+                <p class="question">አስደሰተሽ? 😊</p>
+                <div class="buttons">
+                    <button class="btn btn-yes" onclick="nextStep(5)">በጣም!</button>
+                    <button class="btn btn-yes" onclick="nextStep(5)">አዎ!</button>
+                </div>
+            </div>
+            
+            <!-- Step 5: Final Message -->
+            <div class="step hidden" id="step5">
+                <div class="photo-frame">
+                    <img src="e.jpg" alt="ፍቅሬ" class="main-photo">
+                </div>
+                <div class="message">
+                    <p class="love-text">በህይወቴ ውስጥ ካሉት በጣም አስደናቂ ሰው...</p>
+                    <p class="love-text">ሁሉም ቀን እንደ ፍቅረኞች ቀን እንዲሰማኝ ታደርጊያለሽ ❤️</p>
+                    <p class="love-text">አንቺን በማግኘቴ በጣም እድለኛ ነኝ!</p>
+                </div>
+                <div class="heart-icon">💕</div>
+                <button class="btn btn-yes" onclick="nextStep(6)" style="margin-top: 20px;">ቀጥል (Continue)</button>
+            </div>
+            
+            <!-- Step 6: Gift Box -->
+            <div class="step hidden" id="step6">
+                <p class="question">ስጦታ አለሽ! 🎁</p>
+                <div class="gift-box" id="giftBox" onclick="openGift()">
+                    <div class="gift-lid"></div>
+                    <div class="gift-body">🎁</div>
+                    <div class="gift-bow">🎀</div>
+                </div>
+                <p class="hint">ስጦታውን ንካ!</p>
+            </div>
+            
+            <!-- Step 7: Gift Options -->
+            <div class="step hidden" id="step7">
+                <p class="question">ምን መምረጥ ትፈልጊያለሽ? 💝</p>
+                <div class="gift-options">
+                    <div class="gift-option" onclick="selectGift('music')">
+                        <div class="option-icon">🎵</div>
+                        <p>ሙዚቃ</p>
+                    </div>
+                    <div class="gift-option" onclick="selectGift('text')">
+                        <div class="option-icon">💌</div>
+                        <p>መልእክት</p>
+                    </div>
+                    <div class="gift-option" onclick="selectGift('pic')">
+                        <div class="option-icon">🖼️</div>
+                        <p>ምስሎች</p>
+                    </div>
+                </div>
+                <button class="btn btn-yes" onclick="showAllGifts()" style="margin-top: 30px;">ሁሉንም አሳየኝ! (Show All!)</button>
+            </div>
+            
+            <!-- Step 8: Music Gift -->
+            <div class="step hidden" id="step8-music">
+                <p class="question">የፍቅር ዘፈን 🎵</p>
+                <div class="music-player">
+                    <div class="music-icon">🎶</div>
+                    <p class="music-title">የእኔ ፍቅር...</p>
+                    <audio controls>
+                        <source src="n.mp3" type="audio/mpeg">
+                    </audio>
+                    <p class="music-note">ይህን ዘፈን ስሰማ አንቺን አስባለሁ 💕</p>
+                </div>
+                <button class="btn btn-yes" onclick="nextStep(7)">ተመለስ (Back)</button>
+            </div>
+            
+            <!-- Step 9: Text Gift -->
+            <div class="step hidden" id="step8-text">
+                <p class="question">ልዩ መልእክት 💌</p>
+                <div class="love-letter">
+                    <p>ውድ ፍቅሬ,</p>
+                    <p>አንቺ በህይወቴ ውስጥ ያለሽ ምክንያት ነሽ።</p>
+                    <p>ፈገግታሽ ቀኔን ያበራል።</p>
+                    <p>ድምፅሽ ልቤን ያረጋጋል።</p>
+                    <p>መገኘትሽ ሙሉ ያደርገኛል።</p>
+                    <p>ለዘለአለም አንቺን እወድሻለሁ! ❤️</p>
+                    <p class="signature">- ከፍቅርሽ</p>
+                </div>
+                <button class="btn btn-yes" onclick="nextStep(7)">ተመለስ (Back)</button>
+            </div>
+            
+            <!-- Step 10: Pictures Gift -->
+            <div class="step hidden" id="step8-pic">
+                <p class="question">የፍቅር ትዝታዎች 🖼️</p>
+                <div class="photo-gallery">
+                    <div class="gallery-item">
+                        <img src="e.jpg" alt="Memory 1">
+                        <p>አንቺ ❤️</p>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="f.jpg" alt="Memory 2">
+                        <p>ትዝታዎቻችን</p>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="r.jpg" alt="Memory 3">
+                        <p>አብረን</p>
+                    </div>
+                </div>
+                <button class="btn btn-yes" onclick="nextStep(7)">ተመለስ (Back)</button>
+            </div>
+            
+            <!-- Step 11: All Gifts -->
+            <div class="step hidden" id="step8-all">
+                <p class="question">ሁሉም ስጦታዎችሽ! 🎁💝</p>
+                
+                <div class="all-gifts-container">
+                    <!-- Music Section -->
+                    <div class="gift-section">
+                        <h3>🎵 ሙዚቃ</h3>
+                        <div class="music-player">
+                            <audio controls>
+                                <source src="n.mp3" type="audio/mpeg">
+                            </audio>
+                            <p>ይህን ዘፈን ስሰማ አንቺን አስባለሁ 💕</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Text Section -->
+                    <div class="gift-section">
+                        <h3>💌 መልእክት</h3>
+                        <div class="love-letter-small">
+                            <p>አንቺ በህይወቴ ውስጥ ያለሽ ምክንያት ነሽ። ፈገግታሽ ቀኔን ያበራል። ለዘለአለም አንቺን እወድሻለሁ! ❤️</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Pictures Section -->
+                    <div class="gift-section">
+                        <h3>🖼️ ምስሎች</h3>
+                        <div class="photo-gallery-small">
+                            <img src="e.jpg" alt="Memory">
+                            <img src="f.jpg" alt="Memory">
+                            <img src="r.jpg" alt="Memory">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="final-message">
+                    <p class="love-text">ሁሉም ነገር ለአንቺ ነው! 💕</p>
+                    <div class="heart-icon">❤️</div>
+                </div>
+            </div>
+            
+            <div class="temp-message" id="tempMessage"></div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
